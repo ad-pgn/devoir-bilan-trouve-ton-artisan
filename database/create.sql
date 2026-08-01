@@ -26,6 +26,7 @@ CREATE TABLE ARTISAN(
    email VARCHAR(100)  NOT NULL,
    site_web VARCHAR(255) ,
    top_mois BOOLEAN NOT NULL,
+   ville VARCHAR(100)  NOT NULL,
    id_specialite INT NOT NULL,
    PRIMARY KEY(id_artisan),
    FOREIGN KEY(id_specialite) REFERENCES SPECIALITE(id_specialite)
