@@ -13,6 +13,12 @@ app.get('/', (req, res) => {
   res.send('API Trouve ton artisan opérationnelle');
 });
 
+const categorieRoutes = require('./routes/categorieRoutes');
+app.use('/api/categories', categorieRoutes);
+
+const artisanRoutes = require('./routes/artisanRoutes');
+app.use('/api/artisans', artisanRoutes);
+
 sequelize.authenticate()
   .then(() => console.log('Connexion à la base de données réussie.'))
   .catch((err) => console.error('Erreur de connexion à la base de données :', err));
