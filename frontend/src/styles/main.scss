@@ -29,3 +29,12 @@ body {
 .rounded-artisan {
   border-radius: 12px;
 }
+
+.form-control-artisan {
+  background-color: rgba($color-primary, 0.2);
+  border: 1px solid $color-primary;
+
+  &::placeholder {
+    color: $color-dark;
+  }
+}

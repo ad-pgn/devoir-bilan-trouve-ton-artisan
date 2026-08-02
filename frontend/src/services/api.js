@@ -33,3 +33,12 @@ export async function getArtisanById(id) {
   const response = await fetch(`${API_URL}/artisans/${id}`);
   return handleResponse(response);
 }
+
+export async function contactArtisan(id, formData) {
+  const response = await fetch(`${API_URL}/artisans/${id}/contact`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData),
+  });
+  return handleResponse(response);
+}
