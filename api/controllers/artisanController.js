@@ -1,4 +1,6 @@
 const { Artisan, Specialite, Categorie } = require('../models');
+const { Op } = require('sequelize');
+const transporter = require('../config/mailer');
 
 exports.getAllArtisans = async (req, res) => {
   try {
@@ -59,8 +61,6 @@ exports.getTopArtisans = async (req, res) => {
   }
 };
 
-const { Op } = require('sequelize');
-
 exports.searchArtisans = async (req, res) => {
   try {
     const { q } = req.query;
@@ -102,5 +102,30 @@ exports.getArtisanById = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Erreur lors de la récupération de l\'artisan.' });
+  }
+};
+
+exports.contactArtisan = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { nom, email, objet, message } = req.body;
+
+    const artisan = await Artisan.findByPk(id);
+    if (!artisan) {
+      return res.status(404).json({ message: 'Artisan non trouvé.' });
+    }
+
+    await transporter.sendMail({
+      from: process.env.SMTP_USER,
+      to: artisan.email,
+      replyTo: email,
+      subject: `[Trouve ton artisan] ${objet}`,
+      text: `Message de ${nom} (${email}) :\n\n${message}`,
+    });
+
+    res.json({ message: 'Votre message a bien été envoyé.' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Erreur lors de l'envoi du message." });
   }
 };
