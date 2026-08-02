@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useSearchParams, useNavigate } from 'react-router-dom'; 
 import { getCategories } from '../services/api';
 import logo from '../assets/Logo.png';
 
@@ -8,6 +8,8 @@ function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchParams] = useSearchParams();
+  const categorieActive = searchParams.get('categorie');
 
   // Récupération des catégories depuis l'API au chargement du composant
   useEffect(() => {
@@ -16,10 +18,14 @@ function Header() {
       .catch((err) => console.error('Erreur chargement catégories :', err));
   }, []);
 
+  const navigate = useNavigate();
+
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    // La navigation vers la page de résultats sera branchée avec React Router
-    console.log('Recherche :', searchQuery);
+    if (searchQuery.trim()) {
+      navigate(`/artisans?q=${encodeURIComponent(searchQuery)}`);
+      setSearchOpen(false);
+    }
   };
 
   return (
@@ -43,8 +49,10 @@ function Header() {
             <NavLink
               key={cat.id_categorie}
               to={`/artisans?categorie=${cat.nom_categorie}`}
-              className={({ isActive }) =>
-                `fw-bold text-decoration-none ${isActive ? 'text-success' : 'text-dark'}`
+              className={
+                `fw-bold text-decoration-none ${
+                  categorieActive === cat.nom_categorie ? 'text-success' : 'text-dark'
+                }`
               }
             >
               {cat.nom_categorie}
@@ -115,10 +123,11 @@ function Header() {
             <NavLink
               key={cat.id_categorie}
               to={`/artisans?categorie=${cat.nom_categorie}`}
-              className={({ isActive }) =>
-                `fw-bold text-decoration-none ${isActive ? 'text-success' : 'text-dark'}`
+              className={
+                `fw-bold text-decoration-none ${
+                  categorieActive === cat.nom_categorie ? 'text-success' : 'text-dark'
+                }`
               }
-              onClick={() => setMenuOpen(false)}
             >
               {cat.nom_categorie}
             </NavLink>
