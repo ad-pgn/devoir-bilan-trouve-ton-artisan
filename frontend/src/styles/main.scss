@@ -13,3 +13,19 @@ body {
 .footer-border {
   border-top: 3px solid $color-primary-dark;
 }
+
+.text-artisan-dark {
+  color: $color-dark;
+}
+
+.bg-artisan-light {
+  background-color: $color-light;
+}
+
+.text-artisan-primary-dark {
+  color: $color-primary-dark;
+}
+
+.rounded-artisan {
+  border-radius: 12px;
+}
