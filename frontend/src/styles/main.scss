@@ -1,6 +1,15 @@
 @import "./variables";
+$success: $color-success;
 @import "bootstrap/scss/bootstrap";
 
 body {
   font-family: 'Graphik', sans-serif;
+}
+
+.header-border {
+  border-bottom: 3px solid $color-primary-dark;
+}
+
+.footer-border {
+  border-top: 3px solid $color-primary-dark;
 }
