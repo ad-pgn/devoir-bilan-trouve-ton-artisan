@@ -11,17 +11,19 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Routes>
-        <Route path="/" element={<Accueil />} />
-        <Route path="/artisans" element={<ListeArtisans />} />
-        <Route path="/artisans/:id" element={<FicheArtisan />} />
-        <Route path="*" element={<PageNotFound />} />
-        
-        <Route path="/mentions-legales" element={<PageLegale titre="Mentions légales" />} />
-        <Route path="/donnees-personnelles" element={<PageLegale titre="Données personnelles" />} />
-        <Route path="/accessibilite" element={<PageLegale titre="Accessibilité" />} />
-        <Route path="/cookies" element={<PageLegale titre="Cookies" />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<Accueil />} />
+          <Route path="/artisans" element={<ListeArtisans />} />
+          <Route path="/artisans/:id" element={<FicheArtisan />} />
+          <Route path="*" element={<PageNotFound />} />
+          
+          <Route path="/mentions-legales" element={<PageLegale titre="Mentions légales" />} />
+          <Route path="/donnees-personnelles" element={<PageLegale titre="Données personnelles" />} />
+          <Route path="/accessibilite" element={<PageLegale titre="Accessibilité" />} />
+          <Route path="/cookies" element={<PageLegale titre="Cookies" />} />
+        </Routes>
+      </main>
       <Footer />
     </BrowserRouter>
   );

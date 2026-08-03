@@ -51,7 +51,7 @@ function Header() {
               to={`/artisans?categorie=${cat.nom_categorie}`}
               className={
                 `fw-bold text-decoration-none ${
-                  categorieActive === cat.nom_categorie ? 'text-success' : 'text-dark'
+                  categorieActive === cat.nom_categorie ? 'text-success text-decoration-underline' : 'text-dark'
                 }`
               }
             >
@@ -152,11 +152,11 @@ function Header() {
               <NavLink
                 key={cat.id_categorie}
                 to={`/artisans?categorie=${cat.nom_categorie}`}
-                className={
-                  `d-flex align-items-center gap-2 fw-bold text-decoration-none fs-5 ${
-                    categorieActive === cat.nom_categorie ? 'text-success' : 'text-dark'
-                  }`
-                }
+                  className={
+                    `fw-bold text-decoration-none ${
+                      categorieActive === cat.nom_categorie ? 'text-success text-decoration-underline' : 'text-dark'
+                    }`
+                  }
                 onClick={() => setMenuOpen(false)}
               >
                 <span className="menu-puce" />
