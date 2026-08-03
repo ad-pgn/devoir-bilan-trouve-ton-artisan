@@ -19,6 +19,10 @@ const Artisan = sequelize.define('Artisan', {
     type: DataTypes.STRING(100),
     allowNull: false,
   },
+  photo: {
+  type: DataTypes.STRING(255),
+  allowNull: true,
+  },
   a_propos: {
     type: DataTypes.TEXT,
     allowNull: false,

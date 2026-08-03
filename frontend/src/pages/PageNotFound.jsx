@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import erreur404 from '../assets/Erreur404.jpg';
+import erreur404 from '../assets/erreur404.jpg';
 
 function PageNotFound() {
   return (

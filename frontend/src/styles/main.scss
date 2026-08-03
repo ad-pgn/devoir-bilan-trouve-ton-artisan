@@ -10,6 +10,12 @@ body {
   border-bottom: 3px solid $color-primary-dark;
 }
 
+.header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+
 .footer-border {
   border-top: 3px solid $color-primary-dark;
 }
@@ -37,4 +43,23 @@ body {
   &::placeholder {
     color: $color-dark;
   }
+}
+
+.placeholder-artisan::placeholder {
+  opacity: 0.5;
+  color: $color-dark;
+}
+
+.menu-panel {
+  border-left: 3px solid $color-primary-dark;
+  border-top: 3px solid $color-primary-dark;
+}
+
+.menu-puce {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: $color-primary;
+  flex-shrink: 0;
 }

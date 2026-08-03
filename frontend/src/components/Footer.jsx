@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function Footer() {
   return (
     <footer className="bg-dark text-white py-4 mt-auto footer-border">
-      <div className="container d-flex flex-column flex-md-row justify-content-between gap-4">
+      <div className="container d-flex flex-row align-items-center justify-content-between gap-4" style={{ fontSize: '0.80rem' }}>
         <nav className="d-flex flex-column flex-md-row align-items-md-center gap-2 gap-md-4">
           <Link to="/mentions-legales" className="text-white">Mentions légales</Link>
           <Link to="/donnees-personnelles" className="text-white">Données personnelles</Link>

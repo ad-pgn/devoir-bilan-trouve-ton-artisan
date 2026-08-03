@@ -8,7 +8,6 @@ CREATE TABLE CATEGORIE(
    PRIMARY KEY(id_categorie),
    UNIQUE(nom_categorie)
 );
-
 CREATE TABLE SPECIALITE(
    id_specialite INT AUTO_INCREMENT,
    nom_specialite VARCHAR(50)  NOT NULL,
@@ -17,7 +16,6 @@ CREATE TABLE SPECIALITE(
    UNIQUE(nom_specialite),
    FOREIGN KEY(id_categorie) REFERENCES CATEGORIE(id_categorie)
 );
-
 CREATE TABLE ARTISAN(
    id_artisan INT AUTO_INCREMENT,
    nom_artisan VARCHAR(100)  NOT NULL,
@@ -27,6 +25,7 @@ CREATE TABLE ARTISAN(
    site_web VARCHAR(255) ,
    top_mois BOOLEAN NOT NULL,
    ville VARCHAR(100)  NOT NULL,
+   photo VARCHAR(255) ,
    id_specialite INT NOT NULL,
    PRIMARY KEY(id_artisan),
    FOREIGN KEY(id_specialite) REFERENCES SPECIALITE(id_specialite)
