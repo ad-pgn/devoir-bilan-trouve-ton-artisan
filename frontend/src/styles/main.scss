@@ -1,24 +1,86 @@
+// ============================================================
+// VARIABLES ET SURCHARGE BOOTSTRAP
+// ============================================================
+// Import des variables de la charte graphique (couleurs, etc.)
 @import "./variables";
-$success: $color-success;
+
+// Surcharge des variables internes de Bootstrap pour utiliser
+// notre propre palette plutôt que les couleurs par défaut.
+// $success sert notamment au lien de catégorie actif dans le header
+// (bleu choisi plutôt que le vert d'origine pour l'accessibilité,
+// voir contraste WCAG).
+$success: $color-primary;
+
+// Import de Bootstrap (doit venir après les surcharges de variables
+// ci-dessus pour qu'elles soient bien prises en compte)
 @import "bootstrap/scss/bootstrap";
 
+// ============================================================
+// STYLES GLOBAUX
+// ============================================================
 body {
   font-family: 'Graphik', sans-serif;
 }
 
+// Focus clavier visible et uniforme sur tous les boutons
+// (accessibilité — navigation au clavier)
+.btn:focus-visible {
+  outline: 3px solid #000000;
+  outline-offset: 2px;
+}
+
+// ============================================================
+// HEADER
+// ============================================================
+// Bordure basse du header (identique sur toutes les pages)
 .header-border {
   border-bottom: 3px solid $color-primary-dark;
 }
 
+// Header collé en haut de l'écran au scroll, pour garder
+// la navigation et la recherche toujours accessibles
 .header-sticky {
   position: sticky;
   top: 0;
   z-index: 1030;
 }
 
+// Menu burger mobile/tablette : panneau latéral (drawer)
+.menu-panel {
+  border-left: 3px solid $color-primary-dark;
+  border-top: 3px solid $color-primary-dark;
+}
+
+// Puce ronde décorative devant chaque lien du menu burger
+.menu-puce {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: $color-primary;
+  flex-shrink: 0;
+}
+
+// Réduit l'opacité du texte placeholder de la barre de recherche
+.placeholder-artisan::placeholder {
+  opacity: 0.5;
+  color: $color-dark;
+}
+
+// ============================================================
+// FOOTER
+// ============================================================
+// Bordure haute du footer (identique sur toutes les pages)
 .footer-border {
   border-top: 3px solid $color-primary-dark;
 }
+
+// ============================================================
+// UTILITAIRES CHARTE GRAPHIQUE
+// ============================================================
+// Classes réutilisables basées sur les couleurs de variables.scss,
+// à utiliser à la place des classes Bootstrap génériques quand on
+// veut respecter précisément la palette du projet.
 
 .text-artisan-dark {
   color: $color-dark;
@@ -36,6 +98,11 @@ body {
   border-radius: 12px;
 }
 
+// ============================================================
+// FORMULAIRES
+// ============================================================
+// Style des champs du formulaire de contact (fond bleu clair
+// semi-transparent + bordure pleine couleur, cf. maquette Figma)
 .form-control-artisan {
   background-color: rgba($color-primary, 0.2);
   border: 1px solid $color-primary;
@@ -43,23 +110,4 @@ body {
   &::placeholder {
     color: $color-dark;
   }
-}
-
-.placeholder-artisan::placeholder {
-  opacity: 0.5;
-  color: $color-dark;
-}
-
-.menu-panel {
-  border-left: 3px solid $color-primary-dark;
-  border-top: 3px solid $color-primary-dark;
-}
-
-.menu-puce {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: $color-primary;
-  flex-shrink: 0;
 }
